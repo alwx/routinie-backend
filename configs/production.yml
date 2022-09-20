@@ -1,0 +1,29 @@
+db:
+  host: db-service
+  port: 5432
+  user: postgres
+  password: routinie-password
+  name: routinie-db
+
+redis:
+  address: redis-service:6379
+  password:
+  db: 0
+
+timescale_db:
+  is_available: false
+
+email:
+  from: Routinie
+  sendgrid_api_key: 
+
+web:
+  port: 8001
+  allowed_origin: https://routinie.com
+  cookie_domain: .routinie.com
+  session_key: default-session-key
+
+stripe:
+  key: 
+  callback_domain: https://routinie.com
+  webhook_secret: 

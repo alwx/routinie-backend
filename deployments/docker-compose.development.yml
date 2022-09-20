@@ -1,0 +1,24 @@
+version: '3.3'
+
+networks:
+  routinie_network:
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    networks:
+     - routinie_network
+    ports:
+     - "15432:5432"
+    environment:
+      POSTGRES_DB: routinie-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: routinie-password
+
+  redis:
+    image: redis:alpine
+    networks:
+     - routinie_network
+    ports:
+     - "16379:6379"

@@ -1,0 +1,53 @@
+This is a base page template. All the other template pages implement this interface.
+
+{% interface Page {
+    Head()
+	Body()
+	HTMLClass()
+}
+%}
+
+{% func PageTemplate(p Page) %}
+{% stripspace %}
+<!DOCTYPE html>
+<html class="{%= p.HTMLClass() %}">
+	<head>
+		{%= p.Head() %}
+	</head>
+	{%= p.Body() %}
+</html>
+{% endstripspace %}
+{% endfunc %}
+
+{% code type BasePage struct {
+    Title string
+    Description string
+    Keywords *string
+    AssetsVersion string
+} %}
+
+{% func (p *BasePage) Head() %}
+{% stripspace %}
+    <title>{%s pageTitle(withDefault(p.Title, "Untitled")) %}</title>
+    <meta name="description" content="{%s p.Description %}" />
+    {% if p.Keywords != nil %}
+        <meta name="keywords" content="{%s *p.Keywords %}" />
+    {% endif %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/resources/favicon-64x64.png" />
+    <link rel="icon" type="image/png" sizes="194x194" href="/resources/favicon-194x194.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png" />
+{% endstripspace %}
+{% endfunc %}
+
+{% func (p *BasePage) Body() %}
+<body>
+    Needs to be overridden.
+</body>
+{% endfunc %}
+
+{% func (p *BasePage) HTMLClass() %}ts{% endfunc %}

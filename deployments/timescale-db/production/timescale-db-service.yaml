@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: routinie
+    tier: timescale-db
+  name: routinie-timescale-db-service
+spec:
+  selector:
+    app: routinie
+    tier: timescale-db
+  ports:
+  - protocol: TCP
+    port: 5432
+    targetPort: 5432

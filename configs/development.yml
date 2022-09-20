@@ -1,0 +1,29 @@
+db:
+  host: localhost
+  port: 15432
+  user: postgres
+  password: routinie-password
+  name: routinie-db
+
+redis:
+  address: localhost:16379
+  password:
+  db: 0
+
+timescale_db:
+  is_available: false
+
+email:
+  from: Routinie/dev
+  sendgrid_api_key: 
+
+web:
+  port: 3001
+  allowed_origin: http://localhost:3000
+  cookie_domain:
+  session_key: default-session-key
+
+stripe:
+  key: 
+  callback_domain: http://localhost:3000
+  webhook_secret: 

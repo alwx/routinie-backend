@@ -1,0 +1,43 @@
+{% code
+type IndexPage struct {
+	BasePage
+}
+%}
+
+{% func (p *IndexPage) Head() %}
+{% stripspace %}
+    {%= p.BasePage.Head() %}
+    <link rel="stylesheet" href="/css/index.css?{%s p.AssetsVersion %}">
+{% endstripspace %}
+{% endfunc %}
+
+{% func (p *IndexPage) Body() %}
+{% stripspace %}
+<body>
+    <main class="index">
+        <div class="index__container">
+            <div class="header">
+                <div class="header__content">
+                    <h1 class="header__title">
+                        <span>Routinie</span>
+                    </h1>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="footer__content">
+                    <div class="footer__text">
+                        <p>
+                            <span>Made with love and passion by </span>
+                            <a target="_blank" href="https://alwxdev.com">Alexander Pantiukhov</a>
+                            <span> in 2022.</span>
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+</body>
+{% endstripspace %}
+{% endfunc %}
+
+{% func (p *IndexPage) HTMLClass() %}routinie routinie--full-height{% endfunc %}

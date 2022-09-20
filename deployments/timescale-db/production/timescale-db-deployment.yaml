@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: routinie
+    tier: db
+  name: routinie-timescale-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: routinie
+      tier: timescale-db
+  template:
+    metadata:
+      labels:
+        app: routinie
+        tier: timescale-db
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_DB
+          value: routinie-timescale-db
+        - name: POSTGRES_PASSWORD
+          value: routinie-timescale-password
+        - name: POSTGRES_USER
+          value: postgres
+        image: alwxx/pg_prometheus:latest
+        name: timescale-db
+        resources: {}
+      restartPolicy: Always
+status: {}
